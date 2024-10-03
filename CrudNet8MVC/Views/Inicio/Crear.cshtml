@@ -1,0 +1,63 @@
+﻿@model CrudNet8MVC.Models.Contacto
+
+@{
+    ViewData["Title"] = "Crear Nuevo Contacto";
+}
+
+<h1 class="text-center">Crear contacto</h1>
+
+<div class="row mb-3 d-flex justify-content-between">
+    <div class="col-auto">
+        <a asp-action="Index" asp-controller="Inicio" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left mr-2"></i> Regresar
+        </a>
+    </div>
+    <div class="col-auto">
+        <a asp-action="Crear" asp-controller="Inicio" class="btn btn-primary">
+            <i class="fa-solid fa-plus mr-2"></i> Nuevo Usuario
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Crear Usuario</strong></h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Crear" method="POST">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group m-3">
+                        <label asp-for="Nombre" class="control-label mb-3"></label>
+                        <input asp-for="Nombre"class="form-control" placeholder="Ingresa el nombre" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group m-3">
+                        <label asp-for="Oficio" class="control-label mb-3"></label>
+                        <input asp-for="Oficio" class="form-control" placeholder="Ingresa el oficio" />
+                        <span asp-validation-for="Oficio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group m-3">
+                        <label asp-for="Telefono" class="control-label mb-3"></label>
+                        <input asp-for="Telefono" class="form-control" placeholder="Ingresa el teléfono" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group m-3">
+                        <label asp-for="Email" class="control-label mb-3"></label>
+                        <input asp-for="Email" class="form-control" placeholder="example@example.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-success d-block mx-auto">Guardar <i class="fa-solid fa-check"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

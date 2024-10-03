@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CrudNet8MVC.Models.Contacto>
+
+@{
+    ViewData["Title"] = "Lista de Contactos";
+}
+
+<h1 class="text-center">Lista de Contactos</h1>
+
+<div class="row mb-3 d-flex justify-content-end">
+    <div class="col-auto">
+        <a asp-action="Crear" asp-controller="Inicio" class="btn btn-primary">
+            <i class="fa-solid fa-plus mr-2"></i> Nuevo Usuario
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Lista de Usuarios</strong></h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if(Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tblUsuarios" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Nombre)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Oficio)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Telefono)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                                    <th>@Html.DisplayNameFor(m => m.FechaCreacion)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Id)</td>
+                                        <td>@Html.DisplayFor(m => item.Nombre)</td>
+                                        <td>@Html.DisplayFor(m => item.Oficio)</td>
+                                        <td>@Html.DisplayFor(m => item.Telefono)</td>
+                                        <td>@Html.DisplayFor(m => item.Email)</td>
+                                        <td>@Html.DisplayFor(m => item.FechaCreacion)</td>
+                                        <td>
+                                             <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+                                             <a class="btn btn-secondary" asp-action="Detalle" asp-route-id="@item.Id"><i class="fa-solid fa-eye"></i></a>
+                                             <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>                      
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay usuarios registrados</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
