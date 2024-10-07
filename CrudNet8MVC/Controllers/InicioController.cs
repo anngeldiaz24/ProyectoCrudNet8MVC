@@ -88,6 +88,44 @@ namespace CrudNet8MVC.Controllers
             return View(contacto);
         }
 
+        [HttpGet]
+        public IActionResult Eliminar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var contacto = _contexto.Contacto.Find(id);
+            if (contacto == null)
+            {
+                return NotFound();
+            }
+
+            return View(contacto);
+        }
+
+        [HttpPost, ActionName("Eliminar")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminarContacto(int? id)
+        {
+            var contacto = await _contexto.Contacto.FindAsync(id);
+
+            if (contacto == null)
+            {
+                return View();
+            }
+
+            //Borrar
+            _contexto.Contacto.Remove(contacto);
+            await _contexto.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+
+
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
